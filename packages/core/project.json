@@ -1,0 +1,64 @@
+{
+  "name": "@griffel/core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/core/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/core",
+        "tsConfig": "packages/core/tsconfig.lib.json",
+        "skipTypeField": true,
+        "skipTypeCheck": true,
+        "project": "packages/core/package.json",
+        "entryFile": "packages/core/src/index.ts",
+        "rollupConfig": "tools/getRollupOptions.js",
+        "compiler": "babel",
+        "external": ["tslib"],
+        "format": ["esm", "cjs"],
+        "assets": [
+          {
+            "glob": "packages/core/README.md",
+            "input": ".",
+            "output": "."
+          },
+          {
+            "glob": "LICENSE.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/core"],
+      "options": {
+        "jestConfig": "packages/core/jest.config.ts"
+      }
+    },
+    "bundle-size": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "target": "build" }],
+      "options": {
+        "cwd": "packages/core",
+        "commands": [{ "command": "monosize measure" }]
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "packages/core",
+        "commands": [{ "command": "tsc -b --pretty" }]
+      },
+      "outputs": []
+    }
+  }
+}

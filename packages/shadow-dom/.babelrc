@@ -1,0 +1,12 @@
+{
+  "plugins": ["annotate-pure-calls"],
+  "presets": ["@nx/js/babel"],
+  "env": {
+    "development": {
+      "presets": ["@nx/react/babel"]
+    },
+    "test": {
+      "presets": ["@nx/react/babel"]
+    }
+  }
+}

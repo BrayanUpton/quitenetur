@@ -1,0 +1,26 @@
+{
+  "name": "@griffel/e2e-typescript",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "e2e/typescript/src",
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "target": "build", "dependencies": true }],
+      "options": {
+        "cwd": "e2e/typescript",
+        "commands": [{ "command": "ts-node src/test.ts" }]
+      },
+      "outputs": []
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "e2e/typescript",
+        "commands": [{ "command": "tsc -b --pretty" }],
+        "outputPath": []
+      }
+    }
+  },
+  "tags": []
+}

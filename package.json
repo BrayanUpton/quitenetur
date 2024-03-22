@@ -1,0 +1,25 @@
+{
+  "name": "quitenetur",
+  "author": "OtiliaBoehm",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "28.1.6",
+    "@types/node": "18.6.1",
+    "@types/react": "18.0.10",
+    "@types/react-dom": "18.0.5",
+    "eslint": "8.16.0",
+    "lerna": "5.3.0",
+    "typescript": "4.8.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrayanUpton/quitenetur.git"
+  },
+  "version": "1.0.0",
+  "bugs": {
+    "url": "https://github.com/BrayanUpton/quitenetur.git/issues"
+  }
+}
